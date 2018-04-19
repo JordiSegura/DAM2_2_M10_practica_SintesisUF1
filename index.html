@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link href="js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="js/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>Hello World</title>
+        <style>
+            #myProgress {
+                width: 100%;
+                background-color: grey;
+            }
+            #myBar {
+                width: 0%;
+                height: 30px;
+                background-color: green;
+                height: 30px;
+                background-color: #4CAF50;
+                text-align: center; /* To center it horizontally (if you want) */
+                line-height: 30px; /* To center it vertically */
+                color: white; 
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <h1>Apache Cordova</h1>
+                <div id="deviceready" class="blink">
+                    <p class="event listening">Connecting to Device</p>
+                    <p class="event received">Device is Ready</p>
+                </div>
+            </div>
+            <!-- Panel 1 -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="panel-group" id="desplegable1">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading"> 
+                                <a href="#panel1" data-toggle="collapse" data-parent="#desplegable1">
+                                    Ejercicio 1
+                                </a>
+                            </div>
+                            <div id="panel1" class="panel-collapse collapse in">
+                                <div class="panel-body" style="height: 108px">                                    
+                                    <div class="row">
+                                        <a href="#" id="menBeeps" class="btn btn-warning btn-lg">-- BEEPS</a>
+                                        <a href="#" id="repBeeps" class="btn btn-primary btn-lg">Reprodueix Beeps</a>
+                                        <a href="#" id="masBeeps" class="btn btn-warning btn-lg">++ BEEPS</a>
+                                    </div>
+                                    <div class="row">
+                                        <a href="#" id="contBeeps" style="position:absolute;" class="btn btn-danger btn-lg">Beeps:0</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Panel 2 -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="panel-group" id="desplegable2">
+                        <div class="panel panel-success">
+                            <div class="panel-heading"> 
+                                <a href="#panel2" data-toggle="collapse" data-parent="#desplegable2">
+                                    Ejercicio 2
+                                </a>
+                            </div>
+                            <div id="panel2" class="panel-collapse collapse in">
+                                <div class="panel-body">                                    
+                                    <div class="row">
+                                        <a href="#" id="esquerraFletxa" class="btn btn-warning btn-lg">Esquerra</a>
+                                        <a href="#" id="guardarFletxa" class="btn btn-primary btn-lg">Guarda Direcció</a>
+                                        <a href="#" id="dretaFletxa" class="btn btn-warning btn-lg">Dreta</a>
+                                    </div>
+                                    <div class="row">
+                                        <img id="fletxa" src="img/arrow.png" style="height: 150px; width:150px" alt=""/>
+                                    </div>
+                                    <div class="row">
+                                        <div id="missatge"></div>
+                                        <div id="desviacio"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Panel 3 -->
+        <div class="panel-group" id="desplegable3">
+            <div class="panel panel-info">
+                <div class="panel-heading"> 
+                    <a href="#panel3" data-toggle="collapse" data-parent="#desplegable3">
+                        Ejercicio 3
+                    </a>
+                </div>
+                <div id="panel3" class="panel-collapse collapse in">
+                    <div class="panel-body">                                    
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <a id="start" class="col-xs-12 btn btn-primary btn-lg">Start</a>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <div class="eliminats">
+                                Eliminats = 0
+                            </div>
+                            <div id="myProgress">
+                                <div id="myBar"></div>
+                            </div>
+                        </div>
+                        <div class="row" id="ej4">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
